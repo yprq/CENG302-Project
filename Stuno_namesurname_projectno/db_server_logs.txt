@@ -1,0 +1,58 @@
+2026-04-14 10:00:02 | INFO  | DB_PRIMARY | Database engine started, version 14.2
+2026-04-14 10:00:10 | INFO  | DB_REPLICA | Slave connected to DB_PRIMARY
+2026-04-14 10:00:20 | DEBUG | DB_PRIMARY | Initializing transaction logs
+2026-04-14 10:00:35 | INFO  | DB_PRIMARY | Query [SELECT * FROM users] executed in 12ms
+2026-04-14 10:00:50 | ERROR | DB_PRIMARY | CONNECTION_TIMEOUT_EXCEEDED: Client 192.168.1.10
+2026-04-14 10:01:05 | DEBUG | DB_REPLICA | Replication lag: 2ms
+2026-04-14 10:01:20 | CRITICAL | DB_PRIMARY | DISK_SPACE_FULL: 0 bytes remaining on /var/lib/mysql
+2026-04-14 10:01:35 | INFO  | DB_PRIMARY | Purging old binlogs
+2026-04-14 10:01:50 | INFO  | DB_REPLICA | Query [SELECT COUNT(*) FROM orders] executed in 85ms
+2026-04-14 10:02:05 | ERROR | DB_PRIMARY | DEADLOCK_DETECTED: Transaction 8472 killed
+2026-04-14 10:02:20 | DEBUG | DB_PRIMARY | Vacuum process started on table 'products'
+2026-04-14 10:02:35 | INFO  | DB_PRIMARY | Vacuum process completed in 400ms
+2026-04-14 10:02:50 | CRITICAL | DB_REPLICA | REPLICATION_HALTED: I/O Error
+2026-04-14 10:03:05 | INFO  | DB_PRIMARY | Query [INSERT INTO cart] executed in 8ms
+2026-04-14 10:03:20 | ERROR | DB_REPLICA | DATA_CORRUPTION_DETECTED_IN_PAGE_104
+2026-04-14 10:03:35 | INFO  | DB_PRIMARY | Index rebuilt successfully on 'users.email'
+2026-04-14 10:03:50 | DEBUG | DB_REPLICA | Attempting to resume replication
+2026-04-14 10:04:05 | ERROR | DB_PRIMARY | TOO_MANY_CONNECTIONS: Max pool size (500) reached
+2026-04-14 10:04:20 | CRITICAL | DB_PRIMARY | DB_INSTANCE_CRASHED: Segmentation fault
+2026-04-14 10:04:35 | INFO  | DB_REPLICA | Promoting DB_REPLICA to PRIMARY role
+2026-04-14 10:04:50 | INFO  | DB_PRIMARY | Engine restarting...
+2026-04-14 10:05:05 | ERROR | DB_REPLICA | WRITE_DENIED: Read-only mode is active
+2026-04-14 10:05:20 | DEBUG | DB_PRIMARY | Performing crash recovery
+2026-04-14 10:05:35 | CRITICAL | DB_PRIMARY | INNODB_CORRUPTION: Table 'payments' is missing
+2026-04-14 10:05:50 | INFO  | DB_PRIMARY | Restoring from backup AWS_S3_bkp_0413
+2026-04-14 10:06:05 | INFO  | DB_REPLICA | Accepted PRIMARY role, ready for writes
+2026-04-14 10:06:20 | ERROR | DB_REPLICA | SLOW_QUERY_ALERT: Execution took 4500ms
+2026-04-14 10:06:35 | DEBUG | DB_PRIMARY | Backup restore at 45%
+2026-04-14 10:06:50 | ERROR | DB_REPLICA | AUTHENTICATION_FAILED: Invalid password for user 'app_backend'
+2026-04-14 10:07:05 | INFO  | DB_REPLICA | Query [UPDATE inventory] executed in 45ms
+2026-04-14 10:07:20 | CRITICAL | DB_REPLICA | CPU_THERMAL_THROTTLING: Frequency reduced
+2026-04-14 10:07:35 | INFO  | DB_PRIMARY | Backup restore completed successfully
+2026-04-14 10:07:50 | DEBUG | DB_PRIMARY | Rebuilding indexes post-restore
+2026-04-14 10:08:05 | ERROR | DB_PRIMARY | TABLE_LOCK_TIMEOUT: Waiting for exclusive access
+2026-04-14 10:08:20 | INFO  | DB_REPLICA | Query [DELETE FROM sessions] executed in 100ms
+2026-04-14 10:08:35 | CRITICAL | DB_PRIMARY | MASTER_SLAVE_SYNC_FAILED: Sequence mismatch
+2026-04-14 10:08:50 | ERROR | DB_REPLICA | PACKET_TOO_LARGE: max_allowed_packet exceeded
+2026-04-14 10:09:05 | INFO  | DB_PRIMARY | Sync forcefully reset
+2026-04-14 10:09:20 | DEBUG | DB_REPLICA | Flushing query cache
+2026-04-14 10:09:35 | INFO  | DB_PRIMARY | Query [SELECT COUNT(status) FROM jobs] executed in 120ms
+2026-04-14 10:09:50 | ERROR | DB_PRIMARY | DISK_READ_ERROR: Bad sector on /dev/sda1
+2026-04-14 10:10:05 | CRITICAL | DB_PRIMARY | FATAL_SYSTEM_ERROR: Kernal panic in IO subsystem
+2026-04-14 10:10:20 | INFO  | DB_REPLICA | Handling failover traffic
+2026-04-14 10:10:35 | DEBUG | DB_REPLICA | Connection pool size current: 245
+2026-04-14 10:10:50 | ERROR | DB_REPLICA | SYNTAX_ERROR: Near 'UNION SELECT' at line 1
+2026-04-14 10:11:05 | INFO  | DB_REPLICA | Backup cron job scheduled
+2026-04-14 10:11:20 | CRITICAL | DB_REPLICA | MEMORY_ALLOCATION_FAILED: Cannot allocate 4GB
+2026-04-14 10:11:35 | INFO  | DB_REPLICA | OOM killer terminating lowest priority queries
+2026-04-14 10:11:50 | ERROR | DB_REPLICA | QUERY_ABORTED_BY_ADMIN
+2026-04-14 10:12:05 | DEBUG | DB_REPLICA | System memory stabilized
+2026-04-14 10:12:20 | INFO  | DB_REPLICA | Query [SELECT * FROM logs] executed in 2ms
+2026-04-14 10:12:35 | ERROR | DB_PRIMARY | NODE_UNREACHABLE_PING_FAILED
+2026-04-14 10:12:50 | CRITICAL | DB_REPLICA | UNAUTHORIZED_IP_ADDRESS_BLOCKED: 185.15.22.1
+2026-04-14 10:13:05 | INFO  | DB_REPLICA | Flushing privileges
+2026-04-14 10:13:20 | DEBUG | DB_REPLICA | Updating statistics for table 'users'
+2026-04-14 10:13:35 | ERROR | DB_REPLICA | NO_SUCH_TABLE: 'temp_analytics_data'
+2026-04-14 10:13:50 | INFO  | DB_REPLICA | Checkpoint created at LSN 4920194
+2026-04-14 10:14:05 | INFO  | DB_REPLICA | Service running optimally

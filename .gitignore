@@ -53,3 +53,19 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Mac sistem dosyaları
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code dosyaları
+.vscode/
+
+# Derlenmiş C dosyaları (Eğer listede yoksa ekle)
+*.o
+myData_pipe
+myMore_pipe
+myData_shm
+myMore_shm
+a.out

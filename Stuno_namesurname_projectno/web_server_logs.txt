@@ -1,0 +1,60 @@
+2026-04-14 10:00:01 | INFO  | WEB_NODE_1 | Service started successfully
+2026-04-14 10:00:05 | INFO  | WEB_NODE_2 | Listening on port 8080
+2026-04-14 10:00:12 | DEBUG | WEB_NODE_1 | Cache initialized, 0 keys
+2026-04-14 10:00:25 | INFO  | WEB_NODE_1 | Request GET /api/v1/users processed in 45ms
+2026-04-14 10:00:30 | CRITICAL | WEB_NODE_2 | CPU_USAGE_SPIKE: 98%
+2026-04-14 10:00:45 | INFO  | WEB_NODE_1 | Request POST /api/v1/login processed in 120ms
+2026-04-14 10:01:05 | ERROR | WEB_NODE_2 | HTTP_500_INTERNAL_SERVER_ERROR
+2026-04-14 10:01:10 | DEBUG | WEB_NODE_1 | Cache hit: user_profile_1042
+2026-04-14 10:01:25 | INFO  | WEB_NODE_2 | Node recovered, CPU back to 45%
+2026-04-14 10:01:40 | INFO  | WEB_NODE_3 | New node added to load balancer
+2026-04-14 10:02:00 | ERROR | WEB_NODE_1 | FAILED_TO_LOAD_ASSETS: 404 Not Found
+2026-04-14 10:02:15 | DEBUG | WEB_NODE_3 | Health check passed
+2026-04-14 10:02:30 | INFO  | WEB_NODE_2 | Request GET /api/v1/products processed in 35ms
+2026-04-14 10:02:45 | CRITICAL | WEB_NODE_1 | MEMORY_LEAK_DETECTED: 15.2GB Used
+2026-04-14 10:03:00 | INFO  | WEB_NODE_3 | Request POST /api/v1/cart processed in 85ms
+2026-04-14 10:03:10 | ERROR | WEB_NODE_1 | OUT_OF_MEMORY_EXCEPTION: Restarting process
+2026-04-14 10:03:25 | DEBUG | WEB_NODE_2 | Connection pool established
+2026-04-14 10:03:40 | INFO  | WEB_NODE_3 | User logout successful
+2026-04-14 10:03:55 | INFO  | WEB_NODE_1 | Process restarted, listening on port 8080
+2026-04-14 10:04:10 | ERROR | WEB_NODE_2 | TIMEOUT_WAITING_FOR_UPSTREAM
+2026-04-14 10:04:20 | INFO  | WEB_NODE_1 | Request GET /api/v1/orders processed in 50ms
+2026-04-14 10:04:35 | CRITICAL | WEB_NODE_3 | DISK_IO_BOTTLECK: 100% Utilization
+2026-04-14 10:04:50 | INFO  | WEB_NODE_2 | Request GET /api/v1/users processed in 40ms
+2026-04-14 10:05:05 | DEBUG | WEB_NODE_1 | Session token validated
+2026-04-14 10:05:20 | ERROR | WEB_NODE_3 | SSL_HANDSHAKE_FAILED: Expired certificate
+2026-04-14 10:05:35 | INFO  | WEB_NODE_2 | Request POST /api/v1/pay processed in 210ms
+2026-04-14 10:05:50 | CRITICAL | WEB_NODE_1 | UNHANDLED_PROMISE_REJECTION: App crashing
+2026-04-14 10:06:05 | DEBUG | WEB_NODE_3 | Cert renewed automatically
+2026-04-14 10:06:20 | INFO  | WEB_NODE_3 | Request GET /api/v1/status processed in 10ms
+2026-04-14 10:06:35 | ERROR | WEB_NODE_2 | RATE_LIMIT_EXCEEDED: IP Blocked
+2026-04-14 10:06:50 | INFO  | WEB_NODE_1 | Restarting via PM2 manager
+2026-04-14 10:07:05 | CRITICAL | WEB_NODE_2 | HIGH_LATENCY_ALERT: Avg response 3000ms
+2026-04-14 10:07:20 | INFO  | WEB_NODE_3 | Worker thread spawned
+2026-04-14 10:07:35 | DEBUG | WEB_NODE_1 | Connecting to Redis cache
+2026-04-14 10:07:50 | ERROR | WEB_NODE_1 | REDIS_CONNECTION_REFUSED
+2026-04-14 10:08:05 | INFO  | WEB_NODE_2 | Scaling down response payload
+2026-04-14 10:08:20 | ERROR | WEB_NODE_3 | UNEXPECTED_PAYLOAD_FORMAT: Dropping request
+2026-04-14 10:08:35 | INFO  | WEB_NODE_1 | Redis connected successfully
+2026-04-14 10:08:50 | CRITICAL | WEB_NODE_2 | WAF_ALERT: Potential SQL Injection attempt
+2026-04-14 10:09:05 | DEBUG | WEB_NODE_3 | Garbage collection triggered
+2026-04-14 10:09:20 | ERROR | WEB_NODE_1 | CORS_POLICY_VIOLATION
+2026-04-14 10:09:35 | INFO  | WEB_NODE_2 | Request GET / processed in 15ms
+2026-04-14 10:09:50 | INFO  | WEB_NODE_3 | Image processing task completed
+2026-04-14 10:10:05 | CRITICAL | WEB_NODE_1 | SYN_FLOOD_ATTACK_DETECTED
+2026-04-14 10:10:20 | ERROR | WEB_NODE_2 | JWT_TOKEN_EXPIRED
+2026-04-14 10:10:35 | INFO  | WEB_NODE_1 | Traffic routed to mitigation scrubbing center
+2026-04-14 10:10:50 | DEBUG | WEB_NODE_3 | WebSocket connection closed
+2026-04-14 10:11:05 | ERROR | WEB_NODE_3 | BROKEN_PIPE: Client disconnected unexpectedly
+2026-04-14 10:11:20 | INFO  | WEB_NODE_2 | Background cron job finished
+2026-04-14 10:11:35 | CRITICAL | WEB_NODE_1 | THREAD_POOL_EXHAUSTED
+2026-04-14 10:11:50 | INFO  | WEB_NODE_3 | Request POST /api/upload processed in 850ms
+2026-04-14 10:12:05 | DEBUG | WEB_NODE_2 | Parsing configuration file
+2026-04-14 10:12:20 | ERROR | WEB_NODE_2 | INVALID_CONFIG_SYNTAX
+2026-04-14 10:12:35 | INFO  | WEB_NODE_1 | Expanding thread pool to 64
+2026-04-14 10:12:50 | ERROR | WEB_NODE_3 | EACCES: Permission denied to open file
+2026-04-14 10:13:05 | CRITICAL | WEB_NODE_2 | CLUSTER_QUORUM_LOST
+2026-04-14 10:13:20 | INFO  | WEB_NODE_1 | Request GET /metrics processed in 5ms
+2026-04-14 10:13:35 | DEBUG | WEB_NODE_3 | Checking available updates
+2026-04-14 10:13:50 | ERROR | WEB_NODE_1 | HTTP_502_BAD_GATEWAY
+2026-04-14 10:14:00 | INFO  | WEB_NODE_2 | Service gracefully shutting down
