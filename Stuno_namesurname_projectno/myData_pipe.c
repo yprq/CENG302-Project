@@ -6,10 +6,18 @@
 #include <unistd.h>
 #include <string.h>
 
+#include <signal.h> 
+
 
 pthread_mutex_t pipe_lock; //to make sure our threads dont intervene with each other, only the ones that have mutex can write through the pipe
 int pipe_fd; 
 
+//cleaning function
+void signal_handler(int sig) {
+    printf("\n[Closing] Signal %d was received. Cleaning...\n", sig);
+    unlink("/tmp/my_log_pipe"); //deletes the pipe file
+    exit(0);
+}
 
 void* log_reader_thread(void* arg) {
     char* filename = (char*)arg; // we are sending the file name from the main function, but since we took it as a void
@@ -49,6 +57,7 @@ void* log_reader_thread(void* arg) {
 //argv= argument vector, list that keeps every word that has been written to the command line
 //argv[0]= name of the program, [1],[2] is the file names that we have
 int main(int argc, char* argv[]) {
+    signal(SIGINT, signal_handler); //activate the "ctrl+c" catcher
     // the project wants us to take multiple log files as command-line arguments
 
     // argument count --> parameter count. if we wrote one word: ./myData_pipe the count will become 1,
