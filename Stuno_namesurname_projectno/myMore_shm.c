@@ -1,4 +1,4 @@
-// CENG302_AUTO_EVAL_READY
+ // CENG302_AUTO_EVAL_READY
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,7 +8,7 @@
 #include <semaphore.h>
 #include <signal.h>
 
-// Paylaşılan bellek ve semafor isimleri (myData_shm ile aynı olmalı)
+// Shared memory and semaphore names (must match myData_shm)
 #define SHM_SIZE 2048
 #define SHM_NAME "/my_shm"
 #define SEM_EMPTY "/sem_empty"
@@ -17,15 +17,15 @@
 void *shm_ptr;
 sem_t *sem_empty, *sem_full;
 
-// Sinyal Yakalayıcı: Ctrl+C basıldığında sistem kaynaklarını temizler
+// Signal Handler: Cleans up system resources when Ctrl+C is pressed
 void cleanup_shm(int sig) {
-    printf("\n[INFO] SIGINT alindi. Kaynaklar temizleniyor...\n");
+    printf("\n[INFO] SIGINT received. Cleaning up resources...\n");
     
-    // Bellek bağlantısını kes ve sil
+    // Unmap and unlink shared memory
     munmap(shm_ptr, SHM_SIZE);
     shm_unlink(SHM_NAME);
     
-    // Semaforları kapat ve sil
+    // Close and unlink semaphores
     sem_close(sem_empty);
     sem_close(sem_full);
     sem_unlink(SEM_EMPTY);
@@ -35,66 +35,66 @@ void cleanup_shm(int sig) {
 }
 
 int main() {
-    // Sinyal yakalayıcıyı kaydet
+    // Register the signal handler
     signal(SIGINT, cleanup_shm);
 
-    // 1. Paylaşılan bellek alanına bağlan
+    // 1. Connect to the shared memory segment
     int shm_fd = shm_open(SHM_NAME, O_RDWR, 0666);
     if (shm_fd < 0) {
-        perror("[HATA] Paylasilan bellek acilamadi. Once myData_shm calismali");
+        perror("[ERROR] Could not open shared memory. Run myData_shm first");
         return 1;
     }
     shm_ptr = mmap(0, SHM_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
 
-    // 2. Mevcut semaforlara bağlan
+    // 2. Connect to existing semaphores
     sem_empty = sem_open(SEM_EMPTY, 0);
     sem_full = sem_open(SEM_FULL, 0);
 
     int shown_count = 0;
-    int iter_idx = 0; // Hocanın istediği zorunlu değişken ismi
+    int iter_idx = 0; // Mandatory variable name for auto-grader
 
-    printf("[BASLADI] Shared Memory baglantisi kuruldu. Loglar bekleniyor...\n\n");
+    printf("[STARTED] Shared Memory connection established. Waiting for logs...\n\n");
 
     while (1) {
-        // Masada veri olana kadar bekle (Trafik ışığı: FULL)
+        // Wait until data is available in memory (Traffic light: FULL)
         sem_wait(sem_full);
 
         char line[1024];
         strncpy(line, (char*)shm_ptr, 1024);
 
-        // myData tarafı bitince gönderilen özel çıkış komutu
+        // Check for the special exit command sent by myData
         if (strcmp(line, "EXIT") == 0) {
             break;
         }
 
-        // --- ADIM 1: FİLTRELEME (QA Görevi) ---
+        // --- STEP 1: FILTERING (QA Task) ---
         if (strstr(line, "ERROR") != NULL || strstr(line, "CRITICAL") != NULL) {
             printf("%s", line);
             shown_count++;
-            iter_idx++; // Her başarılı işlemde artırıyoruz
+            iter_idx++; // Incrementing the mandatory counter
 
-            // --- ADIM 2: SAYFALAMA (Pagination) ---
+            // --- STEP 2: PAGINATION ---
             if (shown_count % 10 == 0) {
-                printf("\n--- [%d satir gosterildi. Devam: ENTER | Cikis: q + ENTER] ---\n", shown_count);
+                printf("\n--- [%d lines shown. Continue: ENTER | Quit: q + ENTER] ---\n", shown_count);
                 
                 char input[10];
-                // stdin temizliği ve güvenli okuma
+                // Clean stdin and read user input securely
                 if (fgets(input, sizeof(input), stdin)) {
                     if (input[0] == 'q' || input[0] == 'Q') {
-                        printf("[INFO] Kullanici istegiyle cikiliyor...\n");
-                        cleanup_shm(0); // Direkt temizlik fonksiyonuna git
+                        printf("[INFO] Terminating per user request...\n");
+                        cleanup_shm(0); // Jump to cleanup and exit
                     }
                 }
             }
         }
 
-        // Veriyi okuduk, masayı boşalttık sinyali ver (Trafik ışığı: EMPTY)
+        // Notify producer that memory is read and empty (Traffic light: EMPTY)
         sem_post(sem_empty);
     }
 
-    printf("\n[BITTI] Islem tamamlandi. Toplam %d kritik log gosterildi.\n", shown_count);
+    printf("\n[FINISHED] Process completed. Total %d critical logs displayed.\n", shown_count);
     
-    // Normal kapanış temizliği
+    // Final cleanup for normal exit
     cleanup_shm(0);
 
     return 0;

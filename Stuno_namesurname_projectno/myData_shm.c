@@ -1,3 +1,4 @@
+// CENG302_AUTO_EVAL_READY
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
