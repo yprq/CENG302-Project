@@ -40,8 +40,8 @@ echo "=========================================="
 # Hem Pipe hem SHM derleniyor
 gcc myData_pipe.c -o myData_pipe -pthread
 gcc myMore_pipe.c -o myMore_pipe -pthread
-gcc myData_shm.c -o myData_shm -lrt -pthread
-gcc myMore_shm.c -o myMore_shm -lrt -pthread
+gcc myData_shm.c -o myData_shm -pthread
+gcc myMore_shm.c -o myMore_shm -pthread
 
 if [ $? -ne 0 ]; then
     echo "HATA: Derleme basarisiz oldu! C kodlarinizi kontrol edin."
